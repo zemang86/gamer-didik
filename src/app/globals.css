@@ -1,0 +1,207 @@
+@import "tailwindcss";
+
+/* GDC Brand Colors */
+@theme {
+  --color-gdc-red: #E63946;
+  --color-gdc-red-light: #FF6B6B;
+  --color-gdc-red-dark: #B91C1C;
+  --color-gdc-dark: #0A0A0A;
+  --color-gdc-dark-light: #141414;
+  --color-gdc-dark-lighter: #1A1A1A;
+  --color-gdc-gray: #8B8B8B;
+  --color-gdc-gray-light: #B3B3B3;
+  --color-gdc-gray-dark: #4A4A4A;
+
+  /* Animation Timings */
+  --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  /* Font Sizes */
+  --font-size-hero: clamp(3rem, 8vw, 6rem);
+  --font-size-hero-sub: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(230, 57, 70, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--color-gdc-dark);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-gdc-dark-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gdc-gray-dark);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gdc-gray);
+}
+
+/* Utility Classes */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, var(--color-gdc-dark-lighter) 25%, var(--color-gdc-gray-dark) 50%, var(--color-gdc-dark-lighter) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+
+/* Gradient Backgrounds */
+.bg-hero-gradient {
+  background: linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.8) 60%, #0A0A0A 100%);
+}
+
+.bg-card-gradient {
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 100%);
+}
+
+/* Text Gradient */
+.text-gradient {
+  background: linear-gradient(to right, white, var(--color-gdc-red-light), var(--color-gdc-red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Button Styles */
+.btn-primary {
+  padding: 0.75rem 2rem;
+  background: var(--color-gdc-red);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.btn-primary:hover {
+  background: var(--color-gdc-red-dark);
+  transform: scale(1.05);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.btn-secondary {
+  padding: 0.75rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.btn-secondary:active {
+  transform: scale(0.95);
+}
+
+/* Episode Card Hover */
+.episode-card {
+  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.2s ease;
+}
+
+.episode-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Hide scrollbar for episode rows */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
