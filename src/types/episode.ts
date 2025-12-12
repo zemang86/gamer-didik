@@ -14,6 +14,7 @@ export interface Episode {
   tags: string[];
   topic: string;
   featured?: boolean;
+  comingSoon?: boolean;
 }
 
 export interface Season {

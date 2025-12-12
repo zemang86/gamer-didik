@@ -3,7 +3,15 @@
 import { motion } from 'framer-motion';
 import { Play, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { siteConfig } from '@/data/siteConfig';
+
+const sponsors = [
+  { name: 'Dana Esukan KBS', logo: '/esilogo/Logo DEK.png' },
+  { name: 'ESI', logo: '/esilogo/Asset 4@150x.png' },
+  { name: 'Rakan Muda', logo: '/esilogo/RAKAN MUDA.png' },
+  { name: 'Rakan Muda Digital', logo: '/esilogo/RAKAN DIGITAL.png' },
+];
 
 interface HeroSectionProps {
   onWatchNow?: () => void;
@@ -111,6 +119,37 @@ export default function HeroSection({ onWatchNow }: HeroSectionProps) {
           <Link href="/episodes" className="btn-secondary text-lg">
             Browse Episodes
           </Link>
+        </motion.div>
+
+        {/* Made Possible By */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+          className="mt-16"
+        >
+          <p className="text-gdc-gray text-sm mb-6 uppercase tracking-widest">
+            Made Possible By
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+            {sponsors.map((sponsor, index) => (
+              <motion.div
+                key={sponsor.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 1 + index * 0.1 }}
+                className="relative h-12 md:h-16 w-auto"
+              >
+                <Image
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  width={120}
+                  height={64}
+                  className="h-full w-auto object-contain"
+                />
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
 
