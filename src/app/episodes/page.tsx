@@ -63,7 +63,7 @@ function EpisodesContent() {
             All Episodes
           </h1>
           <p className="text-gdc-gray-light text-lg">
-            Season 1 • 30 Episodes of educational esports content
+            Season 1 • 20 Episodes of educational esports content
           </p>
         </motion.div>
 

@@ -1,12 +1,22 @@
 episodes
 
-1: https://youtu.be/KheiiC5TNcM
-2: https://youtu.be/2tGmmrfkWhk
-3: https://youtu.be/egCAMiPHqkQ
-4: https://youtu.be/y_bMvzNtU1E
-5: https://youtu.be/S3Cy_qnafKw
-6: https://youtu.be/aVW5jnDqVXQ
-7: https://youtu.be/0peuZHikIVM
-8: https://youtu.be/FyIs4USVEaM
-9: https://youtu.be/gpRsXvsd3xg
-10:https://youtu.be/rS70X20O0qk
+1: https://youtu.be/KheiiC5TNcM done
+2: https://youtu.be/2tGmmrfkWhk done
+3: https://youtu.be/egCAMiPHqkQ done
+4: https://youtu.be/y_bMvzNtU1E done
+5: https://youtu.be/S3Cy_qnafKw done
+6: https://youtu.be/aVW5jnDqVXQ done
+7: https://youtu.be/0peuZHikIVM done
+8: https://youtu.be/FyIs4USVEaM done
+9: https://youtu.be/gpRsXvsd3xg done
+10:https://youtu.be/rS70X20O0qk done
+11:https://youtu.be/bY992rt03Zg done
+12:https://youtu.be/Nqm74U_llYw done
+13:https://youtu.be/4LfqzbwiKwk done
+14:https://youtu.be/lBUR7ChP26o done
+15:https://youtu.be/OYfIfEv9Ta8 done
+16:https://youtu.be/36mVOTSjOy0 done
+17:https://youtu.be/6qzgU2aJyGI done
+18:https://youtu.be/uq1pUWrHDeM done
+19:https://youtu.be/AFkcmc-bj6c done
+20:https://youtu.be/SfwRxQD1J-s done

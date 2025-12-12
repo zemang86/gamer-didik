@@ -87,7 +87,7 @@ export default function HeroSection({ onWatchNow }: HeroSectionProps) {
           transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-base sm:text-lg text-gdc-gray mb-8 max-w-2xl mx-auto"
         >
-          30 episodes of educational esports content featuring Bob & Izz
+          20 episodes of educational esports content featuring Bob & Izz
         </motion.p>
 
         {/* Season Badge */}
@@ -98,7 +98,7 @@ export default function HeroSection({ onWatchNow }: HeroSectionProps) {
           className="mb-10"
         >
           <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium text-white border border-white/20">
-            Season 1 • 30 Episodes
+            Season 1 • 20 Episodes
           </span>
         </motion.div>
 
