@@ -1,10 +1,11 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Clock, Lock } from 'lucide-react';
+import { Play, Clock, Lock, Eye } from 'lucide-react';
 import Image from 'next/image';
 import { Episode } from '@/types/episode';
-import { formatDuration, getYouTubeThumbnail } from '@/lib/utils';
+import { formatDuration, getYouTubeThumbnail, getTotalViews, formatViews, getBaseViews } from '@/lib/utils';
 
 interface EpisodeCardProps {
   episode: Episode;
@@ -18,6 +19,13 @@ export default function EpisodeCard({ episode, onPlay, index = 0 }: EpisodeCardP
     : episode.thumbnailUrl;
 
   const isComingSoon = episode.comingSoon;
+
+  // Start with base views to avoid hydration mismatch, then update with localStorage
+  const [views, setViews] = useState(() => getBaseViews(episode.id));
+
+  useEffect(() => {
+    setViews(getTotalViews(episode.id));
+  }, [episode.id]);
 
   return (
     <motion.article
@@ -62,11 +70,17 @@ export default function EpisodeCard({ episode, onPlay, index = 0 }: EpisodeCardP
             </div>
           )}
 
-          {/* Duration Badge - only show if not coming soon */}
+          {/* Duration & Views Badge - only show if not coming soon */}
           {!isComingSoon && (
-            <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/70 backdrop-blur-sm rounded-md text-xs font-medium text-white flex items-center gap-1">
-              <Clock size={12} />
-              {formatDuration(episode.duration)}
+            <div className="absolute bottom-3 right-3 flex items-center gap-2">
+              <div className="px-2 py-1 bg-black/70 backdrop-blur-sm rounded-md text-xs font-medium text-white flex items-center gap-1">
+                <Eye size={12} />
+                {formatViews(views)}
+              </div>
+              <div className="px-2 py-1 bg-black/70 backdrop-blur-sm rounded-md text-xs font-medium text-white flex items-center gap-1">
+                <Clock size={12} />
+                {formatDuration(episode.duration)}
+              </div>
             </div>
           )}
 

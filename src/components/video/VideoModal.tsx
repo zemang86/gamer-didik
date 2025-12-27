@@ -2,11 +2,11 @@
 
 import { useEffect, useCallback, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Clock, Share2, Link2, Check } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Clock, Share2, Link2, Check, Eye } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import YouTube from 'react-youtube';
 import { Episode } from '@/types/episode';
-import { formatDuration } from '@/lib/utils';
+import { formatDuration, getTotalViews } from '@/lib/utils';
 import { siteConfig } from '@/data/siteConfig';
 
 interface VideoModalProps {
@@ -195,6 +195,10 @@ export default function VideoModal({
                       <div className="flex items-center gap-3 mb-2">
                         <span className="px-2 py-1 bg-gdc-red rounded text-xs font-bold text-white">
                           EP {episode.episodeNumber}
+                        </span>
+                        <span className="text-gdc-gray text-sm flex items-center gap-1">
+                          <Eye size={14} />
+                          {getTotalViews(episode.id).toLocaleString()} views
                         </span>
                         <span className="text-gdc-gray text-sm flex items-center gap-1">
                           <Clock size={14} />

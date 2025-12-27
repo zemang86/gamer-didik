@@ -7,6 +7,7 @@ import EpisodeGrid from '@/components/episodes/EpisodeGrid';
 import VideoModal from '@/components/video/VideoModal';
 import { episodes, getNextEpisode, getPreviousEpisode, getEpisodeBySlug } from '@/data/episodes';
 import { Episode } from '@/types/episode';
+import { incrementViews } from '@/lib/utils';
 
 function EpisodesContent() {
   const searchParams = useSearchParams();
@@ -21,6 +22,7 @@ function EpisodesContent() {
       if (episode && !episode.comingSoon) {
         setSelectedEpisode(episode);
         setIsModalOpen(true);
+        incrementViews(episode.id);
       }
     }
   }, [searchParams]);
@@ -28,6 +30,7 @@ function EpisodesContent() {
   const handlePlayEpisode = useCallback((episode: Episode) => {
     setSelectedEpisode(episode);
     setIsModalOpen(true);
+    incrementViews(episode.id);
   }, []);
 
   const handleCloseModal = useCallback(() => {
@@ -38,14 +41,20 @@ function EpisodesContent() {
   const handlePreviousEpisode = useCallback(() => {
     if (selectedEpisode) {
       const prev = getPreviousEpisode(selectedEpisode.id);
-      if (prev) setSelectedEpisode(prev);
+      if (prev) {
+        setSelectedEpisode(prev);
+        incrementViews(prev.id);
+      }
     }
   }, [selectedEpisode]);
 
   const handleNextEpisode = useCallback(() => {
     if (selectedEpisode) {
       const next = getNextEpisode(selectedEpisode.id);
-      if (next) setSelectedEpisode(next);
+      if (next) {
+        setSelectedEpisode(next);
+        incrementViews(next.id);
+      }
     }
   }, [selectedEpisode]);
 

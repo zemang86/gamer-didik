@@ -7,6 +7,7 @@ import EpisodeGrid from '@/components/episodes/EpisodeGrid';
 import VideoModal from '@/components/video/VideoModal';
 import { episodes, getFeaturedEpisode, getNextEpisode, getPreviousEpisode } from '@/data/episodes';
 import { Episode } from '@/types/episode';
+import { incrementViews } from '@/lib/utils';
 
 export default function HomePage() {
   const [selectedEpisode, setSelectedEpisode] = useState<Episode | null>(null);
@@ -19,6 +20,7 @@ export default function HomePage() {
   const handlePlayEpisode = useCallback((episode: Episode) => {
     setSelectedEpisode(episode);
     setIsModalOpen(true);
+    incrementViews(episode.id);
   }, []);
 
   const handleCloseModal = useCallback(() => {
@@ -29,14 +31,20 @@ export default function HomePage() {
   const handlePreviousEpisode = useCallback(() => {
     if (selectedEpisode) {
       const prev = getPreviousEpisode(selectedEpisode.id);
-      if (prev) setSelectedEpisode(prev);
+      if (prev) {
+        setSelectedEpisode(prev);
+        incrementViews(prev.id);
+      }
     }
   }, [selectedEpisode]);
 
   const handleNextEpisode = useCallback(() => {
     if (selectedEpisode) {
       const next = getNextEpisode(selectedEpisode.id);
-      if (next) setSelectedEpisode(next);
+      if (next) {
+        setSelectedEpisode(next);
+        incrementViews(next.id);
+      }
     }
   }, [selectedEpisode]);
 
