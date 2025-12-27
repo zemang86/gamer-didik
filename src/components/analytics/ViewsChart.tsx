@@ -81,7 +81,7 @@ export default function ViewsChart({ data }: ViewsChartProps) {
               labelStyle={{ color: '#fff', fontWeight: 'bold' }}
               itemStyle={{ color: '#E63946' }}
               labelFormatter={(_, payload) => payload?.[0]?.payload?.fullDate || ''}
-              formatter={(value: number) => [value.toLocaleString(), 'Views']}
+              formatter={(value?: number) => [(value ?? 0).toLocaleString(), 'Views']}
             />
             <Area
               type="monotone"
